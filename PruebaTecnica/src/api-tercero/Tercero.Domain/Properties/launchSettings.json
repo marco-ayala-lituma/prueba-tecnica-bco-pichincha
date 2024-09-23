@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "Tercero.Domain": {
+      "commandName": "Project"
+    },
+    "Container (Dockerfile)": {
+      "commandName": "Docker"
+    }
+  }
+}
