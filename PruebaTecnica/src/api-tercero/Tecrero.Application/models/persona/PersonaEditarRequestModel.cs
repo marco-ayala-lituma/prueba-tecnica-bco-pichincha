@@ -4,13 +4,12 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Tercero.Domain.entities.bases;
 
-namespace Tercero.Domain.entities
+namespace Tecrero.Application.models.persona
 {
-  public class PersonaEntity:BaseEntity
+  public class PersonaEditarRequestModel
   {
-    [Key]
+    [Required]
     public int Id { get; set; } // Clave primaria
 
     [Required]

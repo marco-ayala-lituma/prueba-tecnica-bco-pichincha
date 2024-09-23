@@ -11,7 +11,7 @@ namespace Tercero.API.extensions.servers
         options =>
       {
         options.UseSqlServer(
-          builder.Configuration.GetConnectionString(""));
+          builder.Configuration.GetConnectionString("TerceroDb"));
        } 
         ); 
     }

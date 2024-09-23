@@ -13,7 +13,11 @@ namespace Tecrero.Application.profiles
   {
     public PersonaProfile()
     {
+      CreateMap<PersonaEntity, PersonaCrearRequestModel>();
+      CreateMap<PersonaEntity, PersonaRequestModel>().ReverseMap();
       CreateMap<PersonaEntity, PersonaCrearRequestModel>().ReverseMap();
+      CreateMap<PersonaEntity, PersonaEditarRequestModel>().ReverseMap();
+      
     }
   }
 }

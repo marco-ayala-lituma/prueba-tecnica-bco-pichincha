@@ -25,19 +25,67 @@ namespace Tecrero.Application.services.persona
       _mapper = mapper;
       _logger = logger;
     }
+
+    public bool Actualizar(PersonaEditarRequestModel request)
+    {
+      try
+      {
+        PersonaEntity personaEntity = new PersonaEntity();
+
+        IPersonaDomainRepository repository = _unitOfWork.GetPersonaRepository();
+        _mapper.Map(request, personaEntity);
+        repository.UpdateAsync(personaEntity);
+        _unitOfWork.SaveSync();
+        return true;
+      }
+      catch
+      {
+        //salta al catch principal
+        throw;
+      }
+      
+    }
+
     public int Crear(PersonaCrearRequestModel request)
     {
-      PersonaEntity personaEntity = new PersonaEntity();
+      try
+      {
+        PersonaEntity personaEntity = new PersonaEntity();
+        IPersonaDomainRepository repository = _unitOfWork.GetPersonaRepository();
+        _mapper.Map(request, personaEntity);
+        repository.AddSync(personaEntity);
+        _unitOfWork.SaveSync();
+        return personaEntity.Id;
+      }
+      catch
+      {
+        //salta al catch principal
+        throw;
+      }
+    }
 
-      IPersonaDomainRepository repository = _unitOfWork.GetPersonaRepository();
-      _mapper.Map(request, personaEntity);
+    public bool Eliminar(int PersonaId)
+    {
+      throw new NotImplementedException();
+    }
 
-      repository.AddSync(personaEntity);
-
-      _unitOfWork.SaveSync();
-
-      _unitOfWork.BeginTransaction();
-      return 1;
+    public PersonaRequestModel ObtenerPersona(int request)
+    {
+      try
+      {
+        PersonaRequestModel resultado= new PersonaRequestModel();
+        PersonaEntity personaEntity = new PersonaEntity();
+        IPersonaDomainRepository repository = _unitOfWork.GetPersonaRepository();
+        personaEntity = repository.FirstOrDefaultSync(x=>x.Id.Equals(request));
+                  
+        resultado = _mapper.Map<PersonaRequestModel>(personaEntity);
+        return resultado;
+      }
+      catch
+      {
+        //salta al catch principal
+        throw;
+      }
     }
   }
 }
