@@ -2,11 +2,14 @@
 {
   public class BaseEntity
   {
-    public bool Eliminado { get; set; }
+    /*
+     Aqui se puede detallar campos de auditoria:
 
-    public BaseEntity()
-    {
-      Eliminado = false;
-    }
+    usuario crea, fecha creacion, usuario actualiza, fecha de actualizacion, eliminado
+
+    Por ejemplo para el eliminado logico, como es una prueba se va a eliminar fisicamente.
+
+     */
+
   }
 }

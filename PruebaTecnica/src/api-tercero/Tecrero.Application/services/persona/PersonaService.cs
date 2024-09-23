@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Azure.Core;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -26,6 +27,11 @@ namespace Tecrero.Application.services.persona
       _logger = logger;
     }
 
+    /// <summary>
+    /// Para este caso de actualizacion del model request es similar al de la entidad sin embargo si se aplicara auditoria se podria controlar los campos adicionales (quien actualizo y fecha de actualizacion)
+    /// </summary>
+    /// <param name="request"></param>
+    /// <returns></returns>
     public bool Actualizar(PersonaEditarRequestModel request)
     {
       try
@@ -45,6 +51,11 @@ namespace Tecrero.Application.services.persona
       }
       
     }
+    /// <summary>
+    /// La creacion de persona es mediante un model request que obtiene solo los parameetros necesarios
+    /// </summary>
+    /// <param name="request"></param>
+    /// <returns></returns>
 
     public int Crear(PersonaCrearRequestModel request)
     {
@@ -64,9 +75,27 @@ namespace Tecrero.Application.services.persona
       }
     }
 
-    public bool Eliminar(int PersonaId)
+    /// <summary>
+    /// Para este caso el eliminado si es fisico pero se puede considerar el eliminado logico acorde a una defincion de auditoria en control de cambios posibles a la prueba de concepto
+    /// </summary>
+    /// <param name="request"></param>
+    /// <returns></returns>
+    public bool Eliminar(int request)
     {
-      throw new NotImplementedException();
+      try
+      {
+        PersonaEntity personaEntity = new PersonaEntity();
+        IPersonaDomainRepository repository = _unitOfWork.GetPersonaRepository();
+        personaEntity = repository.FirstOrDefaultSync(x => x.Id.Equals(request));
+        repository.RemoveAsync(personaEntity);
+        _unitOfWork.SaveSync();
+        return true;
+      }
+      catch
+      {
+        //salta al catch principal
+        throw;
+      }
     }
 
     public PersonaRequestModel ObtenerPersona(int request)
