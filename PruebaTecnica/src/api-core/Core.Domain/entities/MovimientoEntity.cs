@@ -24,5 +24,9 @@ namespace Core.Domain.entities
 
     [Range(0, double.MaxValue)]
     public decimal Saldo { get; set; } // Saldo después del movimiento
+    
+    [Required]
+    [StringLength(6)]
+    public string NumeroCuenta { get; set; }
   }
 }

@@ -11,7 +11,7 @@ namespace Core.API.extensions.servers
         options =>
         {
           options.UseSqlServer(
-            builder.Configuration.GetConnectionString("TerceroDb"));
+            builder.Configuration.GetConnectionString("CoreDb"));
         }
         );
     }
