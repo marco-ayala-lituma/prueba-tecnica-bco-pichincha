@@ -1,6 +1,13 @@
+using Core.API.extensions.automappers;
+using Core.API.extensions.injections;
+using Core.API.extensions.servers;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+ServerExtension.ConfigureSQLServices(builder);
+DependencyInjectionExtension.ConfigureDependenciesInjectionsServices(builder);
+AutoMapperExtension.ConfigureAutoMappersServices(builder.Services);
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

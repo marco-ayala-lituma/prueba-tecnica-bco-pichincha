@@ -6,6 +6,9 @@ using Tercero.Domain.repositories.interfaces.generics;
 using Tercero.Infrastructure.contexts;
 using Tercero.Infrastructure.repositories.generics;
 using Tercero.Infrastructure.repositories.persona;
+using Tecrero.Application.services.cliente;
+using Tercero.Infrastructure.repositories.cliente;
+using Tecrero.Application.services.cliente.interfaces;
 
 namespace Tercero.API.extensions.injections
 {
@@ -21,6 +24,10 @@ namespace Tercero.API.extensions.injections
       //Persona 
       builder.Services.AddScoped<IPersonaDomainRepository, PersonaRepository>();
       builder.Services.AddScoped<IPersonaService, PersonaService>();
+
+      //Cliente
+      builder.Services.AddScoped<IClienteDomainRepository, ClienteRepository>();
+      builder.Services.AddScoped<IClienteService, ClienteService>();
 
 
     }
