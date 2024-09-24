@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Tecrero.Application.models.persona;
+﻿using Tecrero.Application.models.persona;
 
 namespace Tecrero.Application.services.persona.interfaces
 {
@@ -13,8 +8,6 @@ namespace Tecrero.Application.services.persona.interfaces
     bool Actualizar(PersonaEditarRequestModel request);
 
     PersonaRequestModel ObtenerPersona(int request);
-
-
     bool Eliminar(int PersonaId);
   }
 }

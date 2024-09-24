@@ -1,4 +1,4 @@
-﻿namespace Tercero.Domain
+﻿namespace Core.Domain
 {
   public class PagedCollection<T>
   {

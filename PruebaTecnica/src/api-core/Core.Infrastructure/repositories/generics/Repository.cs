@@ -1,18 +1,23 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Core.Domain;
+using Core.Domain.repositories.interfaces.generics;
+using Core.Infrastructure.contexts;
+using Core.Infrastructure.exceptions;
+using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
-using Tercero.Domain;
-using Tercero.Domain.repositories.interfaces.generics;
-using Tercero.Infrastructure.contexts;
-using Tercero.Infrastructure.exceptions;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace Tercero.Infrastructure.repositories.generics
+namespace Core.Infrastructure.repositories.generics
 {
   public class Repository<T> : IRepository<T> where T : class
   {
-    public TerceroContext _context { get; set; }
+    public CoreContext _context { get; set; }
 
-    public Repository(TerceroContext contex)
+    public Repository(CoreContext contex)
     {
       _context = contex;
     }

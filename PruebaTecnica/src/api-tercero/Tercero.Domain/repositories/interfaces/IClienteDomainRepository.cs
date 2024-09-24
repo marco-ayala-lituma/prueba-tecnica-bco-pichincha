@@ -3,9 +3,10 @@ using Tercero.Domain.repositories.interfaces.generics;
 
 namespace Tercero.Domain.repositories.interfaces
 {
-  public interface IPersonaDomainRepository : IRepository<PersonaEntity>
+  public interface IClienteDomainRepository : IRepository<ClienteEntity>
   {
 
   }
 }
+
 

@@ -1,11 +1,5 @@
 ﻿using AutoMapper;
-using Azure.Core;
 using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Tecrero.Application.models.persona;
 using Tecrero.Application.services.persona.interfaces;
 using Tercero.Domain.entities;
@@ -18,7 +12,7 @@ namespace Tecrero.Application.services.persona
     private readonly IUnitOfWork _unitOfWork;
     private readonly IMapper _mapper;
     private readonly ILogger<PersonaService> _logger;
-    
+
     public PersonaService(IUnitOfWork unitOfWork, IMapper mapper,
         ILogger<PersonaService> logger)
     {
@@ -49,7 +43,7 @@ namespace Tecrero.Application.services.persona
         //salta al catch principal
         throw;
       }
-      
+
     }
     /// <summary>
     /// La creacion de persona es mediante un model request que obtiene solo los parameetros necesarios
@@ -102,11 +96,11 @@ namespace Tecrero.Application.services.persona
     {
       try
       {
-        PersonaRequestModel resultado= new PersonaRequestModel();
+        PersonaRequestModel resultado = new PersonaRequestModel();
         PersonaEntity personaEntity = new PersonaEntity();
         IPersonaDomainRepository repository = _unitOfWork.GetPersonaRepository();
-        personaEntity = repository.FirstOrDefaultSync(x=>x.Id.Equals(request));
-                  
+        personaEntity = repository.FirstOrDefaultSync(x => x.Id.Equals(request));
+
         resultado = _mapper.Map<PersonaRequestModel>(personaEntity);
         return resultado;
       }

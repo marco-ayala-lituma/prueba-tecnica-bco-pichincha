@@ -1,12 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore.Storage;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Tercero.Domain.repositories.interfaces;
 using Tercero.Domain.repositories.interfaces.generics;
 using Tercero.Infrastructure.contexts;
+using Tercero.Infrastructure.repositories.cliente;
 using Tercero.Infrastructure.repositories.generics;
 using Tercero.Infrastructure.repositories.persona;
 
@@ -61,16 +57,20 @@ namespace Tecrero.Application.services
       _context.Database.RollbackTransaction();
     }
 
-    
+
 
     #region Personalizados
 
-    
+
     public IPersonaDomainRepository GetPersonaRepository()
     {
       return new PersonaRepository(_context);
     }
-    
+
+    public IClienteDomainRepository GetClienteRepository()
+    {
+      return new ClienteRepository(_context);
+    }
     #endregion Personalizados
   }
 }

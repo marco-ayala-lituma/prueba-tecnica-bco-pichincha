@@ -1,9 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Tercero.Domain.entities;
 
 namespace Tercero.Infrastructure.contexts
@@ -19,5 +14,6 @@ namespace Tercero.Infrastructure.contexts
 
     }
     public DbSet<PersonaEntity> Persona { get; set; }
+    public DbSet<ClienteEntity> Cliente { get; set; }
   }
 }
