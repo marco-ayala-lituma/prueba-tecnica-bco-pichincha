@@ -1,4 +1,5 @@
-﻿using Core.Application.services;
+﻿using Core.Application.clients;
+using Core.Application.services;
 using Core.Application.services.cuenta;
 using Core.Application.services.cuenta.interfaces;
 using Core.Application.services.movimiento;
@@ -20,6 +21,8 @@ namespace Core.API.extensions.injections
       builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
       builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
       builder.Services.AddHttpClient();
+
+      builder.Services.AddScoped<TerceroClient>();
 
       //Movimiento
       builder.Services.AddScoped<IMovimientoDomainRepository, MovimientoRepository>();

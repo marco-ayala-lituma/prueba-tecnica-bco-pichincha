@@ -13,7 +13,7 @@ namespace Core.Application.profiles
   {
     public MovimientoProfile()
     {
-      CreateMap<MovimientoEntity, MovimientoCrearRequestModel>();
+      CreateMap<MovimientoEntity, MovimientoCrearRequestModel>().ReverseMap();
       CreateMap<MovimientoEntity, MovimientoRequestModel>().ReverseMap();
       CreateMap<MovimientoEntity, MovimientoEditarRequestModel>().ReverseMap();
     }

@@ -52,7 +52,7 @@ namespace Tecrero.Application.services.persona
     /// <returns></returns>
 
     public int Crear(PersonaCrearRequestModel request)
-    {
+    { 
       try
       {
         PersonaEntity personaEntity = new PersonaEntity();

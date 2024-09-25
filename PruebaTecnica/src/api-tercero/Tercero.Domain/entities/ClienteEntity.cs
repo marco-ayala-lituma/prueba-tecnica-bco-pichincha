@@ -2,9 +2,9 @@
 
 namespace Tercero.Domain.entities
 {
-  public class ClienteEntity : PersonaEntity
+  public class ClienteEntity 
   {
-    [Key]
+    [Required]
     public int ClienteId { get; set; } // Clave primaria única para Cliente
 
     [Required]
@@ -13,6 +13,10 @@ namespace Tercero.Domain.entities
 
     [Required]
     public bool Estado { get; set; } // Puede ser true (activo) o false (inactivo)
+
+    // Clave foránea que referencia a Persona
+    //public int PersonaId { get; set; } // Aquí agregamos PersonaId para establecer la relación
+    public virtual PersonaEntity Persona { get; set; } // Navegación a Persona
   }
 
 }

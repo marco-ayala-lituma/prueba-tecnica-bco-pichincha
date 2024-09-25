@@ -1,10 +1,15 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace Core.Domain.entities
+namespace Core.Application.models.cuenta
 {
-  public class CuentaEntity
+  public class CuentaEditarRequestModel
   {
-    [Key]
+    [Required]
     public string NumeroCuenta { get; set; } // Clave única para la cuenta
 
     [Required]

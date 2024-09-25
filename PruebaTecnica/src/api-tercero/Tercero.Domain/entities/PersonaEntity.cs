@@ -5,7 +5,7 @@ namespace Tercero.Domain.entities
 {
   public class PersonaEntity : BaseEntity
   {
-    [Key]
+    [Required]
     public int Id { get; set; } // Clave primaria
 
     [Required]
@@ -29,5 +29,8 @@ namespace Tercero.Domain.entities
     [StringLength(15)]
     [Phone]
     public string Telefono { get; set; }
+
+    // Navegación hacia Cliente
+    public virtual ClienteEntity Cliente { get; set; }
   }
 }

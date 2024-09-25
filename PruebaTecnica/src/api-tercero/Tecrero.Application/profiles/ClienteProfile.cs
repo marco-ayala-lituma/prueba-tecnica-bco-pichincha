@@ -14,7 +14,6 @@ namespace Tecrero.Application.profiles
   {
     public ClienteProfile()
     {
-      CreateMap<ClienteEntity, ClienteCrearRequestModel>();
       CreateMap<ClienteEntity, ClienteRequestModel>().ReverseMap();
       CreateMap<ClienteEntity, ClienteCrearRequestModel>().ReverseMap();
       CreateMap<ClienteEntity, ClienteEditarRequestModel>().ReverseMap();

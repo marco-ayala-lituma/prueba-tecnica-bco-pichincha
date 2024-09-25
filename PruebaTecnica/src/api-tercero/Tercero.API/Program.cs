@@ -9,6 +9,13 @@ ServerExtension.ConfigureSQLServices(builder);
 DependencyInjectionExtension.ConfigureDependenciesInjectionsServices(builder);
 AutoMapperExtension.ConfigureAutoMappersServices(builder.Services);
 builder.Services.AddControllers();
+
+// Configuración de logging
+builder.Services.AddLogging(config =>
+{
+  config.AddConsole(); // Muestra logs en la consola
+  config.AddDebug();   // Muestra logs en la salida de debug
+});
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

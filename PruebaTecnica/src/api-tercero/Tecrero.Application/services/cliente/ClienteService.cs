@@ -9,6 +9,7 @@ using Tercero.Domain.entities;
 using Tercero.Domain.repositories.interfaces;
 using Tecrero.Application.models.cliente;
 using Tecrero.Application.services.cliente.interfaces;
+using Tecrero.Application.services.persona.interfaces;
 
 namespace Tecrero.Application.services.cliente
 {
@@ -17,13 +18,16 @@ namespace Tecrero.Application.services.cliente
     private readonly IUnitOfWork _unitOfWork;
     private readonly IMapper _mapper;
     private readonly ILogger<ClienteService> _logger;
-
-    public ClienteService(IUnitOfWork unitOfWork, IMapper mapper,
-        ILogger<ClienteService> logger)
+    private readonly IPersonaService _personaService;
+    public ClienteService(IUnitOfWork unitOfWork,
+        IMapper mapper,
+        ILogger<ClienteService> logger,
+        IPersonaService personaService)
     {
       _unitOfWork = unitOfWork;
       _mapper = mapper;
       _logger = logger;
+      _personaService = personaService;
     }
 
     /// <summary>
@@ -35,8 +39,9 @@ namespace Tecrero.Application.services.cliente
     {
       try
       {
+        if (_personaService.ObtenerPersona(request.ClienteId) == null)
+          throw new Exception("Id Cliente no existe como persona");
         ClienteEntity ClienteEntity = new ClienteEntity();
-
         IClienteDomainRepository repository = _unitOfWork.GetClienteRepository();
         _mapper.Map(request, ClienteEntity);
         repository.UpdateAsync(ClienteEntity);
@@ -60,12 +65,14 @@ namespace Tecrero.Application.services.cliente
     {
       try
       {
+        if (_personaService.ObtenerPersona(request.ClienteId) == null)
+          throw new Exception("Id Cliente no existe como persona");
         ClienteEntity ClienteEntity = new ClienteEntity();
         IClienteDomainRepository repository = _unitOfWork.GetClienteRepository();
         _mapper.Map(request, ClienteEntity);
         repository.AddSync(ClienteEntity);
         _unitOfWork.SaveSync();
-        return ClienteEntity.Id;
+        return ClienteEntity.ClienteId;
       }
       catch
       {
@@ -83,9 +90,11 @@ namespace Tecrero.Application.services.cliente
     {
       try
       {
+        if (_personaService.ObtenerPersona(request) == null)
+          throw new Exception("Id Cliente no existe como persona");
         ClienteEntity ClienteEntity = new ClienteEntity();
         IClienteDomainRepository repository = _unitOfWork.GetClienteRepository();
-        ClienteEntity = repository.FirstOrDefaultSync(x => x.Id.Equals(request));
+        ClienteEntity = repository.FirstOrDefaultSync(x => x.ClienteId.Equals(request));
         repository.RemoveAsync(ClienteEntity);
         _unitOfWork.SaveSync();
         return true;
@@ -104,7 +113,7 @@ namespace Tecrero.Application.services.cliente
         ClienteRequestModel resultado = new ClienteRequestModel();
         ClienteEntity ClienteEntity = new ClienteEntity();
         IClienteDomainRepository repository = _unitOfWork.GetClienteRepository();
-        ClienteEntity = repository.FirstOrDefaultSync(x => x.Id.Equals(request));
+        ClienteEntity = repository.FirstOrDefaultSync(x => x.ClienteId.Equals(request));
 
         resultado = _mapper.Map<ClienteRequestModel>(ClienteEntity);
         return resultado;
