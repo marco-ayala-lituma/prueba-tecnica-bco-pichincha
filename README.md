@@ -1,5 +1,5 @@
 # prueba-tecnica-bco-pichincha
-Prueba Tecnica para el Banco del Pichincha por Marco Ayala
+Prueba Tecnica para NTT Data por Marco Ayala
 
 # Contiene
 Nivel Senority
