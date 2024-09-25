@@ -102,7 +102,7 @@ namespace Core.Application.services.cuenta
       }
     }
 
-    public CuentaRequestModel ObtenerCuenta(int request)
+    public CuentaRequestModel ObtenerCuenta(string request)
     {
       try
       {

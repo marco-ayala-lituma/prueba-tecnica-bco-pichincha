@@ -1,4 +1,5 @@
 ﻿using Core.API.Controllers.bases;
+using Core.Application.models.cuenta;
 using Core.Application.models.movimiento;
 using Core.Application.services.movimiento.interfaces;
 using Microsoft.AspNetCore.Http;
@@ -33,7 +34,7 @@ namespace Core.API.Controllers
       catch (Exception ex)
       {
         _logger.LogError(ex.Message);
-        return BadRequest("No se logro crear Movimiento");
+        return BadRequest("No se logro obtener Movimiento");
       }
     }
     [HttpPost("Crear")]
@@ -48,7 +49,7 @@ namespace Core.API.Controllers
       catch (Exception ex)
       {
         _logger.LogError(ex.Message);
-        return BadRequest("No se logro crear Movimiento");
+        return BadRequest(ex.Message);
       }
     }
     [HttpPut("Actualizar")]
@@ -81,6 +82,20 @@ namespace Core.API.Controllers
         return BadRequest("No se logro eliminar Movimiento");
       }
     }
-
+    [HttpPost("Reporte")]
+    public IActionResult Reporte(ClienteReporteRequestModel request)
+    {
+      try
+      {
+        var result = _MovimientoService.ObtenerReporteMovimientos(request);
+        _logger.LogInformation($"Movimiento Creado {result}");
+        return Ok($"Movimiento Creado", result);
+      }
+      catch (Exception ex)
+      {
+        _logger.LogError(ex.Message);
+        return BadRequest(ex.Message);
+      }
+    }
   }
 }

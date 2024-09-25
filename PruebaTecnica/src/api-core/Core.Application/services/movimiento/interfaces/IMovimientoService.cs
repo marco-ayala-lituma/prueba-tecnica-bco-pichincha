@@ -1,4 +1,5 @@
-﻿using Core.Application.models.movimiento;
+﻿using Core.Application.models.cuenta;
+using Core.Application.models.movimiento;
 
 namespace Core.Application.services.movimiento.interfaces
 {
@@ -8,5 +9,7 @@ namespace Core.Application.services.movimiento.interfaces
     bool Actualizar(MovimientoEditarRequestModel request);
     MovimientoRequestModel ObtenerMovimiento(int request);
     bool Eliminar(int PersonaId);
+
+    MovimientoReporteResponseModel ObtenerReporteMovimientos(ClienteReporteRequestModel request);
   }
 }

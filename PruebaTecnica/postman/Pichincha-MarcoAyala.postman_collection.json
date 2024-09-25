@@ -1,0 +1,139 @@
+{
+	"info": {
+		"_postman_id": "529b4a61-cec3-4a50-9018-af7a18351013",
+		"name": "Pichincha-MarcoAyala",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "5131612",
+		"_collection_link": "https://galactic-crater-382190.postman.co/workspace/Personal~fd8e685d-2794-42bf-a154-18f193d63fa8/collection/5131612-529b4a61-cec3-4a50-9018-af7a18351013?action=share&source=collection_link&creator=5131612"
+	},
+	"item": [
+		{
+			"name": "Cliente",
+			"item": [
+				{
+					"name": "Eliminar",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"clienteId\": 7,\r\n  \"contrasena\": \"string\",\r\n  \"estado\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:44391/api/Cliente/Eliminar?request=10",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44391",
+							"path": [
+								"api",
+								"Cliente",
+								"Eliminar"
+							],
+							"query": [
+								{
+									"key": "request",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ObtenerCliente",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:44391/api/Cliente/ObtenerPorId?request=1",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44391",
+							"path": [
+								"api",
+								"Cliente",
+								"ObtenerPorId"
+							],
+							"query": [
+								{
+									"key": "request",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"clienteId\": 7,\r\n  \"contrasena\": \"string\",\r\n  \"estado\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:44391/api/Cliente/Actualizar",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44391",
+							"path": [
+								"api",
+								"Cliente",
+								"Actualizar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CrearCliente",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"clienteId\": 1,\r\n  \"contrasena\": \"1234\",\r\n  \"estado\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:44391/api/Cliente/Crear",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44391",
+							"path": [
+								"api",
+								"Cliente",
+								"Crear"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

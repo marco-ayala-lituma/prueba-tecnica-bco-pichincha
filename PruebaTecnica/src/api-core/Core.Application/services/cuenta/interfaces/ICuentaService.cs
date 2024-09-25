@@ -6,7 +6,9 @@ namespace Core.Application.services.cuenta.interfaces
   {
     string Crear(CuentaCrearRequestModel request);
     bool Actualizar(CuentaEditarRequestModel request);
-    CuentaRequestModel ObtenerCuenta(int request);
+    CuentaRequestModel ObtenerCuenta(string request);
     bool Eliminar(string PersonaId);
+
+
   }
 }

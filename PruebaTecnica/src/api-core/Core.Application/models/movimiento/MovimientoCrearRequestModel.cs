@@ -9,20 +9,18 @@ namespace Core.Application.models.movimiento
 {
   public class MovimientoCrearRequestModel
   {
-    
-    [Required]
+
+    [Required(ErrorMessage = "El valor es obligatorio.")]
     public DateTime Fecha { get; set; } // Fecha del movimiento
 
-    [Required]
+    [Required(ErrorMessage = "El valor es obligatorio.")]
     [StringLength(50)]
     public string TipoMovimiento { get; set; } // Ej: "Depósito", "Retiro", etc.
 
-    [Range(0, double.MaxValue)]
+    [Required(ErrorMessage = "El valor es obligatorio.")]
     public decimal Valor { get; set; } // Valor del movimiento
 
-    [Range(0, double.MaxValue)]
-    public decimal Saldo { get; set; } // Saldo después del movimiento
-    [Required]
+    [Required(ErrorMessage = "El valor es obligatorio.")]
     [StringLength(6)]
     public string NumeroCuenta { get; set; }
   }

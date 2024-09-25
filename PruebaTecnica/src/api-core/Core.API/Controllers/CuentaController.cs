@@ -19,7 +19,7 @@ namespace Core.API.Controllers
     }
 
     [HttpGet("ObtenerPorId")]
-    public IActionResult ObtenerPorId(int request)
+    public IActionResult ObtenerPorId(string request)
     {
       try
       {
